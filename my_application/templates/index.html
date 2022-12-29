@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/images.jpg' %}" type="image/icon type">
+    <title>
+        Yay, it's soccer time!
+    </title>
+    <style>
+        div#unu 
+        {
+            background-color: darkgoldenrod;
+            position: absolute;
+            right: 0px;
+            top: 24.5%;
+            width: 19.55%;
+            height: 16%;
+        }
+
+        form 
+        {
+            position: absolute;
+            font-family: 'Alfa Slab One', cursive;
+            right: 0px;
+            top: 29.5%;
+            width: 19.55%;
+            height: 15%;
+        }
+
+        div#doi 
+        {
+            background-color: goldenrod;
+            position: absolute;
+            right: 0px;
+            left: 0px;
+            height: 25%;
+            top: -10px;
+        }
+
+        div#trei 
+        {
+            background-color: olive;
+            position: absolute;
+            top: 18%;
+            left: 0px;
+            right: 0px;
+        }
+
+        a 
+        {
+            font-size: 0.5cm;
+            color: darkolivegreen;
+            text-decoration:none;
+        }
+
+        iframe 
+        {
+            position: absolute;
+            bottom: 2.98%;
+            left: 0px;
+            height: 72.5%;
+            width: 80.49%;
+        }
+
+        img 
+        {
+            position: absolute;
+            bottom: 2.6%;
+            right: 0px;
+            height: 58%;
+            width: 19.55%;
+        }
+
+        pre 
+        {
+            font-size: 1cm;
+            font-family: 'Alfa Slab One', cursive;
+            text-align: center;
+        }
+
+        div#sase 
+        {
+            position: absolute;
+            background-color: olive;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: 3%;
+        }
+
+        p
+        {
+            font-size: 0.5cm;
+            color: olivedrab;
+            font-family: 'Alfa Slab One', cursive;
+            bottom: 300px;
+        }
+
+        div#sapte
+        {
+            background-color: none transparent;
+            position: absolute;
+            top: 18%;
+            left: 0px;
+        }
+
+        div#opt
+        {
+            background-color: none transparent;
+            position: absolute;
+            top: 18%;
+            right: 0px;
+        }
+
+        div#noua
+        {
+            background-color: none transparent;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+
+        /* Start https://www.cursors-4u.com */ * {
+            cursor: url(https://cur.cursors-4u.net/toons/too-5/too419.cur), auto !important;
+        }
+        /* End https://www.cursors-4u.com */
+        </style>
+</head>
+<body>
+    <div id="unu"></div>
+    <form align="center" action="{% url 'my_application' %}" method='post'>
+        {% csrf_token %}
+        Looking for a soccer team?
+        <input type="text" name="cautare" list="echipe">
+        <datalist id="echipe">
+        </datalist>
+        <input type="submit" value="Search">
+    </form>
+    <div id="doi">
+        <p>Welcome to a Kermit-themed sports page!</p>
+        <a href="templates/comentarii.html"><pre style="color: olivedrab; text-decoration:none">Just some soccer stuff</pre></a>
+    </div>
+    <div id="trei">
+        <p align='center'>
+            <a href="templates/soccer_info.html" target="a">⚽</a>
+            <a href="templates/inscrieri.html" target="a">Want to join the competition?</a>
+            <a href="templates/emblem_check.html" target="a">🥅</a>
+        </p>
+    </div>
+    <div id='sapte'>
+        <p style="color: goldenrod">
+        Kermit - the latest Muppets' sports news 👇🏻
+        </p>
+    </div>
+    <div id='opt'>
+        <p style="color: goldenrod">
+        <a href="https://www.instagram.com/kermitthefrog/">Follow our host on social media! 🐸</a>
+        </p>
+    </div>
+
+    <iframe name="a" src="https://www.youtube.com/embed/no1ilt3VjBY?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+    <div id="sase"></div>
+    <a href='templates/art_gallery.html' target='a'><img src="{% static 'img/giphy.gif' %}" align="left"></a>
+</body>
+</html>

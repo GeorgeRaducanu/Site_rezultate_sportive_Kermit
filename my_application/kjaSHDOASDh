@@ -1,0 +1,39 @@
+# views.py
+from django.shortcuts import render
+from django.template import loader
+from django.http import HttpResponse
+from .models import Echipe
+import os
+
+def inscrieri(request):
+    if request.method == 'POST':
+        # Insert the new echipe into the database
+        echipe = Echipe.objects.create(
+            nume=request.POST['nume'],
+            tara=request.POST['tara'],
+            antrenor=request.POST['antrenor'],
+        )
+        # Check if the echipe was created
+        if echipe:
+            message = "It worked fine, thanks :) See you at the next competition!"
+        else:
+            message = "Maybe try again, babe :("
+        # Check if a file was uploaded
+        if 'fisier' in request.FILES:
+            # Get the uploaded file
+            uploaded_file = request.FILES['fisier']
+            # Save the file to the uploads directory
+            file_path = os.path.join('uploads', uploaded_file.name)
+            with open(file_path, 'wb') as f:
+                f.write(uploaded_file.read())
+            message += "<br>What a nice emblem! :O"
+        else:
+            message += "<br>Your emblem couldn't be uploaded :("
+        return HttpResponse(message)
+    else:
+        # Render the inscrieri template
+        template = loader.get_template('inscrieri.html')
+        context = {
+            'kermit_image_url': '{% static "img/kermit.jpg" %}',
+        }
+        return HttpResponse(template.render(context, request))
