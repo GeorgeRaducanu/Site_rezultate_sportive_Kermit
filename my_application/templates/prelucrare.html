@@ -1,0 +1,128 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="{% static 'img/images.jpg' %}" type="image/icon type">
+    <title>
+        Yay, it's soccer time!
+    </title>
+    <style>
+        div#unu
+        {
+            background-color: olive;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            height: 100%;
+            width: 30%;
+        }
+
+        /* Start https://www.cursors-4u.com */ * {
+            cursor: url(https://cur.cursors-4u.net/toons/too-5/too419.cur), auto !important;
+            font-family: 'Liberation Sans', 'Helvetica';
+        }
+        /* End https://www.cursors-4u.com */
+
+        .hidden 
+        {
+            display: none !important;
+        }
+
+        a#doi
+        {
+            position: fixed;
+            right: 1%;
+            top: 1%;
+            text-decoration: none;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body style='background-color: darkgoldenrod'>
+
+{% if error %}
+    <table align="center">
+        <tr>
+            <td><font size="6">Oops! No team found!</font></td>
+        </tr>
+        <tr>
+            <td><font size="6">Make sure your team is registered.</font></td>
+        </tr>
+        <tr>
+            <td><font size="6">Try searching for another team, maybe you'll be lucky next time!</font></td>
+        </tr>
+        <tr align='center'><td><img src="{% static 'img/wrongteam.jpg' %}" width='800' height='600'></td></tr>
+    </table>
+{% else %}
+    {% if not meciuri %}
+        <table align="center">
+            <tr>
+                <td><font size="6">Oops! No match found!</font></td>
+            </tr>
+            <tr>
+                <td><font size="6">Try searching for another team, maybe you'll be lucky next time!</font></td>
+            </tr>
+            <tr>
+                <td><font size="6">Stay positive!</font></td>
+            </tr>
+            <tr align='center'><td><img src="{% static 'img/nomatches.jpg' %}" width='500' height='600'></td></tr>
+        </table>
+    {% endif %}
+
+    {% for match in meciuri %}
+        <font size="5">
+        ⚽ Match no. {{ forloop.counter }}:<br><br>
+
+        {{ match.echipa1 }}   vs.   {{ match.echipa2 }}: {{ match.goluri1 }} - {{ match.goluri2 }}<br><br>
+        Date: {{ match.data }}<br>
+        Place: {{ match.loc }}<br><br>
+        {% if match.goluri1 != match.goluri2 %}
+            {% if match.goluri1 > match.goluri2 %}
+                {% if match.echipa1 == echipa.nume %}
+                    The winner is {{ match.echipa1 }}! Yay!
+                {% else %}
+                    Oh... The winner is {{ match.echipa1 }}...
+                {% endif %}
+            {% else %}
+                {% if match.echipa2 == echipa.nume %}
+                    The winner is {{ match.echipa2 }}! Yay!
+                {% else %}
+                    Oh... The winner is {{ match.echipa2 }}...
+                {% endif %}
+            {% endif %}
+        {% else %}
+            Well, it's a tie!
+        {% endif %}
+        </font><hr>
+    {% endfor %}
+
+    {% if meciuri %}
+        <div id="unu">
+            <table align="center">
+                <tr>
+                    <td>
+                        <font size="5"><big> ⚽ Team facts:</big><br><br>
+                        Country: {{ echipa.tara }}<br>
+                        Coach: {{ echipa.antrenor }}<br>
+                        Wins: {{ echipa.premii }}<br>
+                        Motivational quote:<br><br></font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <video width="400" height="400" controls muted>
+                            <source src="{% static 'img/yaa.mp4' %}" type="video/mp4">
+                        </video>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+{% endif %}
+
+        <a id="doi" href="{% url 'my_application' %}">🔙</a>
+</body>
+</html>

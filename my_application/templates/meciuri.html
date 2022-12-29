@@ -1,0 +1,63 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Yay, it's soccer time!
+    </title>
+    <style>
+        img 
+        {
+            position: absolute;
+            bottom: 15%;
+            left: 7%;
+            height: 65%;
+            width: 19.55%;
+        }
+
+		pre
+        {
+            position: absolute;
+            bottom: 20%;
+            right: 30%;
+            height: 58%;
+            width: 50%;
+        }
+
+        p
+        {
+            font-family: 'Liberation Sans', 'Helvetica'
+        }
+
+        a 
+        {
+            font-size: 0.5cm;
+            color: black;
+            text-decoration:none;
+            font-family: 'Liberation Sans', 'Helvetica'
+        }
+
+		/* Start https://www.cursors-4u.com */ 
+        * 
+        {
+            cursor: url(https://cur.cursors-4u.net/toons/too-5/too419.cur), auto !important;
+        }
+        /* End https://www.cursors-4u.com */
+    </style>
+</head>
+<body style="background-color: goldenrod">
+	<h1 style="font-family: 'Liberation Sans', 'Helvetica'">Fill in the form in order to schedule a match!</h1>
+        <img src="{% static 'img/kermit.jpg' %}" width='300' height='300'>
+        <pre>
+        <form method='post' action="{% url 'meciuri' %}" align='center'>
+            {% csrf_token %}
+            <label style="font-family: 'Liberation Sans', 'Helvetica'">Team name: <input type='text' name='e' maxlength="50" size="55"></label><br>
+            <label style="font-family: 'Liberation Sans', 'Helvetica'">                                    Date: <input type='date' name='data'></label><br>
+            <label style="font-family: 'Liberation Sans', 'Helvetica'">Place:           <input type='text' name='loc' maxlength="50" size="55"></label><br>
+                                                    <input type='submit' value='We will play!'>
+        </form>
+        </pre>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Yay, it's soccer time!</title>
+	<link rel="icon" href="{% static 'img/images.jpg' %}" type="image/icon type">
+	<style>
+	/* Start https://www.cursors-4u.com */ 
+        * 
+        {
+            cursor: url(https://cur.cursors-4u.net/toons/too-5/too419.cur), auto !important;
+        }
+        /* End https://www.cursors-4u.com */
+
+		a#doi
+        {
+            position: absolute;
+            right: 1%;
+            top: 1%;
+            text-decoration: none;
+        }
+	</style>
+</head>
+
+<body>
+
+ <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Box</a> is loading comments...</div>
+ <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/mike/mike.css" />
+ <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&opts=16735&num=5&ts=1615733661564");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+
+	<a id="doi" href="{% url 'my_application' %}" style="font-size: 75px">🔙</a>
+</body>
+</html>
